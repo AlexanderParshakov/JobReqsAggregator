@@ -16,6 +16,19 @@ struct Constants {
         static let showPost = "showPost"
     }
     
+    struct HeroIDs {
+        private init() {}
+        
+        static let postTitle = "PostTitle"
+        static let postContent = "PostContent"
+        static let timedPosted = "TimePosted"
+        static let positionName = "PositionName"
+        static let supportNumber = "SupportNumber"
+        static let wrappingView = "WrappingView"
+        static let addSupportButton = "AddSupportButton"
+        static let subtractSupportButton = "SubtractSupportButton"
+    }
+    
     struct Colors {
         private static func hexStringToUIColor (hex: String) -> UIColor {
             var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

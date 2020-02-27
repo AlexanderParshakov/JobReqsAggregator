@@ -1,16 +1,30 @@
 PODS:
+  - Hero (1.5.0)
   - JGProgressHUD (2.1)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
 
 DEPENDENCIES:
+  - Hero
   - JGProgressHUD
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
+    - Hero
     - JGProgressHUD
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
 
-PODFILE CHECKSUM: 41b2aa391b034fa866bb14acfabfe6918b5575a0
+PODFILE CHECKSUM: d7f2077f5ce56772e0758378710fb8a09b8ea3f5
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.0.beta.3

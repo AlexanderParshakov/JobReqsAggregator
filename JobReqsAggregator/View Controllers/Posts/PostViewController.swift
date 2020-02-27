@@ -13,6 +13,8 @@ import JGProgressHUD
 class PostViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var addToFavoritesButton: UIButton!
     @IBOutlet weak var readLaterButton: UIButton!
     @IBOutlet weak var postTitleLabel: UILabel!
@@ -41,16 +43,34 @@ class PostViewController: UIViewController {
         supportNumberLabel.text = String(post.supportNumber)
     }
     @IBAction func addToFavorites(_ sender: Any) {
-        if !addedToFavorite {
+        if !post.isFavorite {
             showFavSelection()
+            self.post.isFavorite = true
+            RealmService.Posts.updatePost(post: post)
+            return
         }
         else {
             hideFavSelection()
+            self.post.isFavorite = false
+            RealmService.Posts.updatePost(post: post)
+        }
+    }
+    @IBAction func addToReadLater(_ sender: Any) {
+        if !post.isReadLater {
+            showReadLaterSelection()
+            self.post.isReadLater = true
+            RealmService.Posts.updatePost(post: post)
+            return
+        }
+        else {
+            hideReadLaterSelection()
+            self.post.isReadLater = false
+            RealmService.Posts.updatePost(post: post)
         }
     }
     
     // MARK: - Variables
-    var post: Post = Post(id: 0, position: Position(id: 0, title: "", description: "", avgSalary: 0, openVacancies: 0), supportNumber: 0, title: "", content: "", timePosted: "")
+    var post: Post = Post(id: 0, position: Position(id: 0, title: "", description: "", avgSalary: 0, openVacancies: 0, skillsRequired: nil, relatedCourses: nil, relatedMaterials: nil), supportNumber: 0, title: "", content: "", timePosted: "")
     var numberOfMaterials: Int {
         return post.position.relatedMaterials?.count ?? 0
     }
@@ -58,7 +78,6 @@ class PostViewController: UIViewController {
         return post.position.relatedCourses?.count ?? 0
     }
     var originalSupport: Int = 0
-    var addedToFavorite: Bool = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -66,10 +85,14 @@ class PostViewController: UIViewController {
         
         setupButton(button: addToFavoritesButton)
         setupButton(button: readLaterButton)
+        setupGestureRecognizer()
         
         setupData()
+        setupHeroIDs()
         linksTableView.reloadData()
         linksTableViewHeightConstraint.constant = linksTableView.contentSize.height
+        
+        scrollView.delegate = self
     }
     
     func setupData() {
@@ -80,6 +103,13 @@ class PostViewController: UIViewController {
         contentLabel.text = post.content
         
         originalSupport = post.supportNumber
+        
+        if post.isFavorite {
+            highlightButtonSelection(button: addToFavoritesButton)
+        } else { dehighlightButtonSelection(button: addToFavoritesButton) }
+        if post.isReadLater {
+            highlightButtonSelection(button: readLaterButton)
+        } else { dehighlightButtonSelection(button: readLaterButton) }
     }
 }
 
@@ -141,37 +171,73 @@ extension PostViewController {
 }
 
 extension PostViewController {
-    func hideFavSelection() {
+    private func showHUD(text: String) {
         let hud = JGProgressHUD(style: .extraLight)
         hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-        hud.textLabel.text = "Удалено из Избранного"
-        hud.animation = JGProgressHUDFadeZoomAnimation()
-        hud.cornerRadius = 30
-        hud.show(in: self.view)
-        hud.dismiss(afterDelay: 1.2)
-        
-        UIView.animate(withDuration: 0.5) {
-            self.addToFavoritesButton.backgroundColor = Constants.Colors.lightGrey
-            self.addToFavoritesButton.setTitleColor(.darkText, for: .normal)
-        }
-        addedToFavorite = false
-    }
-    func showFavSelection() {
-        let hud = JGProgressHUD(style: .extraLight)
-        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-        hud.textLabel.text = "В Избранном"
+        hud.textLabel.text = text
         hud.animation = JGProgressHUDFadeZoomAnimation()
         hud.cornerRadius = 30
         hud.parallaxMode = .alwaysOff
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 1.2)
-        
+    }
+    func hideFavSelection() {
+        showHUD(text: "Удалено из Избранного")
+        dehighlightButtonSelection(button: addToFavoritesButton)
+    }
+    func showFavSelection() {
+        showHUD(text: "В Избранном")
+        highlightButtonSelection(button: addToFavoritesButton)
+    }
+    func hideReadLaterSelection() {
+        showHUD(text: "Удалено из Прочитать позже")
+        dehighlightButtonSelection(button: readLaterButton)
+    }
+    func showReadLaterSelection() {
+        showHUD(text: "Прочитать позже")
+        highlightButtonSelection(button: readLaterButton)
+    }
+    
+    
+    private func highlightButtonSelection(button: UIButton) {
         UIView.animate(withDuration: 0.5) {
-            self.addToFavoritesButton.backgroundColor = .systemBlue
-            self.addToFavoritesButton.setTitleColor(.white, for: .normal)
+            button.backgroundColor = .systemBlue
+            button.setTitleColor(.white, for: .normal)
         }
-        addedToFavorite = true
-        return
+    }
+    private func dehighlightButtonSelection(button: UIButton) {
+        UIView.animate(withDuration: 0.5) {
+            button.backgroundColor = Constants.Colors.lightGrey
+            button.setTitleColor(.darkText, for: .normal)
+        }
+    }
+    
+    private func setupGestureRecognizer() {
+        let toLeftGestureRecognizer = UISwipeGestureRecognizer()
+        toLeftGestureRecognizer.direction = .right
+        toLeftGestureRecognizer.addTarget(self, action: #selector(self.handleSwipes))
+        let toRightGestureRecognizer = UISwipeGestureRecognizer()
+        toRightGestureRecognizer.direction = .left
+        toRightGestureRecognizer.addTarget(self, action: #selector(self.handleSwipes))
+        
+        self.view.addGestureRecognizer(toLeftGestureRecognizer)
+        self.view.addGestureRecognizer(toRightGestureRecognizer)
+    }
+    @objc private func handleSwipes(sender: UISwipeGestureRecognizer?) {
+        guard sender != nil else { return }
+        switch sender?.direction {
+        case UISwipeGestureRecognizer.Direction.right:
+            navigationController?.popViewController(animated: true)
+        case UISwipeGestureRecognizer.Direction.left:
+            navigationController?.popViewController(animated: true)
+        default:
+            return
+        }
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y < -40 {
+            navigationController?.popViewController(animated: true)
+        }
     }
 }
 
@@ -197,5 +263,22 @@ extension PostViewController: PostLinkButtonDelegate {
     func openLink(atIndex: IndexPath) {
         guard let url = URL(string: post.position.relatedMaterials?[atIndex.row].url ?? "") else { return }
         UIApplication.shared.open(url)
+    }
+}
+
+// MARK: - Hero
+extension PostViewController {
+    
+    private func setupHeroIDs() {
+        //        postTitleLabel.hero.id = Constants.HeroIDs.postTitle + String(post.id)
+        //        contentLabel.hero.id = Constants.HeroIDs.postTitle + String(post.id)
+        //        timeLabel.hero.id = Constants.HeroIDs.postTitle + String(post.id)
+        //        positionNameLabel.hero.id = Constants.HeroIDs.postTitle + String(post.id)
+        //        supportNumberLabel.hero.id = Constants.HeroIDs.postTitle + String(post.id)
+        //
+        //        addSupportButton.hero.id = Constants.HeroIDs.addSupportButton + String(post.id)
+        //        subtractSupportButton.hero.id = Constants.HeroIDs.subtractSupportButton + String(post.id)
+        
+        view.hero.id = Constants.HeroIDs.wrappingView + String(post.id)
     }
 }

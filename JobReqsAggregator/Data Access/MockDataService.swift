@@ -11,21 +11,21 @@ import Foundation
 struct MockDataService {
     
     static func fetchPosts() -> [Post] {
-        let material1 = Material(id: 1, name: "Apple Do's and Dont's", url: "https://developer.apple.com/design/tips/", positions: nil)
+        let material1 = Material(id: 0, name: "Apple Do's and Dont's", url: "https://developer.apple.com/design/tips/", positions: nil)
         let material2 = Material(id: 1, name: "Apple Guidelines", url: "https://developer.apple.com/design/human-interface-guidelines/", positions: nil)
         let relatedMaterials1 = [material1, material2]
         
         let cSharpDeveloper = Position(id: 0, title: "C# Developer", description: "No description", avgSalary: 90000, openVacancies: 421, skillsRequired: nil, relatedCourses: nil, relatedMaterials: nil)
         let post1 = Post(id: 0, position: cSharpDeveloper, supportNumber: 14, title: "Пять вещей, которые я бы посоветовал начинающим", content: mockPostText, timePosted: "12:41")
         
-        let uxDesigner = Position(id: 0, title: "UX-дизайнер", description: "No description", avgSalary: 70000, openVacancies: 41, skillsRequired: nil, relatedCourses: nil, relatedMaterials: relatedMaterials1)
-        let post2 = Post(id: 0, position: uxDesigner, supportNumber: 14, title: "Ожидаемые изменения в UX", content: mockPostText, timePosted: "13:34")
+        let uxDesigner = Position(id: 1, title: "UX-дизайнер", description: "No description", avgSalary: 70000, openVacancies: 41, skillsRequired: nil, relatedCourses: nil, relatedMaterials: relatedMaterials1)
+        let post2 = Post(id: 1, position: uxDesigner, supportNumber: 14, title: "Ожидаемые изменения в UX", content: mockPostText, timePosted: "13:34")
         
-        let metroDriver = Position(id: 0, title: "Водитель метро", description: "No description", avgSalary: 40000, openVacancies: 9, skillsRequired: nil, relatedCourses: nil, relatedMaterials: nil)
-        let post3 = Post(id: 0, position: metroDriver, supportNumber: 14, title: "Что на самом деле важно", content: mockPostText, timePosted: "13:59")
+        let metroDriver = Position(id: 2, title: "Водитель метро", description: "No description", avgSalary: 40000, openVacancies: 9, skillsRequired: nil, relatedCourses: nil, relatedMaterials: nil)
+        let post3 = Post(id: 2, position: metroDriver, supportNumber: 14, title: "Что на самом деле важно", content: mockPostText, timePosted: "13:59")
         
-        let pilot = Position(id: 0, title: "Пилот самолета", description: "No description", avgSalary: 83500, openVacancies: 4, skillsRequired: nil, relatedCourses: nil, relatedMaterials: nil)
-        let post4 = Post(id: 0, position: pilot, supportNumber: 14, title: "Хотите летать? Получите права", content: mockPostText, timePosted: "15:18")
+        let pilot = Position(id: 3, title: "Пилот самолета", description: "No description", avgSalary: 83500, openVacancies: 4, skillsRequired: nil, relatedCourses: nil, relatedMaterials: nil)
+        let post4 = Post(id: 3, position: pilot, supportNumber: 14, title: "Хотите летать? Получите права", content: mockPostText, timePosted: "15:18")
         
         return [post1, post2, post3, post4].sorted(by: {$0.timePosted > $1.timePosted})
         

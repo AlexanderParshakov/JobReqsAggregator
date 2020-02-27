@@ -17,6 +17,8 @@ class PostViewCell: UITableViewCell {
     @IBOutlet weak var supportNumberLabel: UILabel!
     @IBOutlet weak var timePostedLabel: UILabel!
     @IBOutlet weak var wrappingView: UIView!
+    @IBOutlet weak var addSupportButton: UIButton!
+    @IBOutlet weak var subtractSupportButton: UIButton!
     
 
     
@@ -43,8 +45,8 @@ class PostViewCell: UITableViewCell {
         wrappingView.layer.cornerRadius = 7
         wrappingView.layer.masksToBounds = false
         wrappingView.layer.shadowColor = UIColor.gray.cgColor
-        wrappingView.layer.shadowOffset = CGSize(width: 3, height:  3)
-        wrappingView.layer.shadowRadius = 40
+        wrappingView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        wrappingView.layer.shadowRadius = 5
         wrappingView.layer.shadowOpacity = 0.3
     }
 }

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A5058C8623D9A4C400A7B962 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5058C8523D9A4C400A7B962 /* PostViewController.swift */; };
+		A51CC12D23F1CBBA00050754 /* RealmPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CC12C23F1CBBA00050754 /* RealmPost.swift */; };
+		A51CC12F23F1CC9C00050754 /* RealmPostPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CC12E23F1CC9C00050754 /* RealmPostPosition.swift */; };
+		A51CC13123F1CD4D00050754 /* RealmPostSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CC13023F1CD4D00050754 /* RealmPostSkill.swift */; };
+		A51CC13323F1CD5600050754 /* RealmPostMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51CC13223F1CD5600050754 /* RealmPostMaterial.swift */; };
 		A524062123A18BEB006B387A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524062023A18BEB006B387A /* AppDelegate.swift */; };
 		A524062323A18BEB006B387A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524062223A18BEB006B387A /* SceneDelegate.swift */; };
 		A524062723A18BEB006B387A /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524062623A18BEB006B387A /* FavoritesViewController.swift */; };
@@ -23,6 +27,8 @@
 		A524064923A1A4A8006B387A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524064823A1A4A8006B387A /* Post.swift */; };
 		A524064B23A1A9E7006B387A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524064A23A1A9E7006B387A /* HomeViewController.swift */; };
 		A524064E23A1ABB7006B387A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A524064D23A1ABB7006B387A /* Constants.swift */; };
+		A5785A3523F29FB2000D4E22 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5785A3423F29FB2000D4E22 /* RealmService.swift */; };
+		A5785A3723F2DE3B000D4E22 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5785A3623F2DE3B000D4E22 /* Repository.swift */; };
 		A58F548F23DC3FDE007D9335 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58F548E23DC3FDE007D9335 /* MockDataService.swift */; };
 		A58F549123DC6688007D9335 /* PostLinkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58F549023DC6688007D9335 /* PostLinkViewCell.swift */; };
 		D61CFDB95CF3D39B4FB19F11 /* Pods_JobReqsAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAB31E27DDB1E37C2233315 /* Pods_JobReqsAggregator.framework */; };
@@ -32,6 +38,10 @@
 		3AAB31E27DDB1E37C2233315 /* Pods_JobReqsAggregator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobReqsAggregator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5242F2AF717673D4113EAA35 /* Pods-JobReqsAggregator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobReqsAggregator.release.xcconfig"; path = "Target Support Files/Pods-JobReqsAggregator/Pods-JobReqsAggregator.release.xcconfig"; sourceTree = "<group>"; };
 		A5058C8523D9A4C400A7B962 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		A51CC12C23F1CBBA00050754 /* RealmPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPost.swift; sourceTree = "<group>"; };
+		A51CC12E23F1CC9C00050754 /* RealmPostPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPostPosition.swift; sourceTree = "<group>"; };
+		A51CC13023F1CD4D00050754 /* RealmPostSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPostSkill.swift; sourceTree = "<group>"; };
+		A51CC13223F1CD5600050754 /* RealmPostMaterial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPostMaterial.swift; sourceTree = "<group>"; };
 		A524061D23A18BEB006B387A /* JobReqsAggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobReqsAggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A524062023A18BEB006B387A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A524062223A18BEB006B387A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +59,8 @@
 		A524064823A1A4A8006B387A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A524064A23A1A9E7006B387A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A524064D23A1ABB7006B387A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A5785A3423F29FB2000D4E22 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		A5785A3623F2DE3B000D4E22 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		A58F548E23DC3FDE007D9335 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		A58F549023DC6688007D9335 /* PostLinkViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLinkViewCell.swift; sourceTree = "<group>"; };
 		F8205C3851E5300F6FBE38D5 /* Pods-JobReqsAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobReqsAggregator.debug.xcconfig"; path = "Target Support Files/Pods-JobReqsAggregator/Pods-JobReqsAggregator.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +94,17 @@
 				A524062D23A18BF1006B387A /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A51CC12B23F1C0ED00050754 /* Realm Models */ = {
+			isa = PBXGroup;
+			children = (
+				A51CC12C23F1CBBA00050754 /* RealmPost.swift */,
+				A51CC12E23F1CC9C00050754 /* RealmPostPosition.swift */,
+				A51CC13023F1CD4D00050754 /* RealmPostSkill.swift */,
+				A51CC13223F1CD5600050754 /* RealmPostMaterial.swift */,
+			);
+			path = "Realm Models";
 			sourceTree = "<group>";
 		};
 		A524061423A18BEB006B387A = {
@@ -121,11 +144,8 @@
 		A524063623A18FB5006B387A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A524063723A18FCF006B387A /* Position.swift */,
-				A524063923A190F0006B387A /* Skill.swift */,
-				A524063B23A191A2006B387A /* Course.swift */,
-				A524063D23A1920A006B387A /* Material.swift */,
-				A524064823A1A4A8006B387A /* Post.swift */,
+				A567171C23F29A5E005924EC /* Standard Models */,
+				A51CC12B23F1C0ED00050754 /* Realm Models */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -133,6 +153,7 @@
 		A524063F23A1936A006B387A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A524064A23A1A9E7006B387A /* HomeViewController.swift */,
 				A524064123A19A82006B387A /* NotificationsViewController.swift */,
 				A524062623A18BEB006B387A /* FavoritesViewController.swift */,
 				A524064523A1A45A006B387A /* Posts */,
@@ -143,7 +164,6 @@
 		A524064523A1A45A006B387A /* Posts */ = {
 			isa = PBXGroup;
 			children = (
-				A524064A23A1A9E7006B387A /* HomeViewController.swift */,
 				A5058C8523D9A4C400A7B962 /* PostViewController.swift */,
 				A58F549223DC668F007D9335 /* Cells */,
 			);
@@ -158,10 +178,24 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		A567171C23F29A5E005924EC /* Standard Models */ = {
+			isa = PBXGroup;
+			children = (
+				A524063723A18FCF006B387A /* Position.swift */,
+				A524063923A190F0006B387A /* Skill.swift */,
+				A524063B23A191A2006B387A /* Course.swift */,
+				A524063D23A1920A006B387A /* Material.swift */,
+				A524064823A1A4A8006B387A /* Post.swift */,
+			);
+			path = "Standard Models";
+			sourceTree = "<group>";
+		};
 		A58F548D23DC3FCC007D9335 /* Data Access */ = {
 			isa = PBXGroup;
 			children = (
 				A58F548E23DC3FDE007D9335 /* MockDataService.swift */,
+				A5785A3423F29FB2000D4E22 /* RealmService.swift */,
+				A5785A3623F2DE3B000D4E22 /* Repository.swift */,
 			);
 			path = "Data Access";
 			sourceTree = "<group>";
@@ -299,20 +333,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				A524064223A19A82006B387A /* NotificationsViewController.swift in Sources */,
+				A51CC12D23F1CBBA00050754 /* RealmPost.swift in Sources */,
+				A51CC13323F1CD5600050754 /* RealmPostMaterial.swift in Sources */,
 				A524064923A1A4A8006B387A /* Post.swift in Sources */,
 				A524063E23A1920A006B387A /* Material.swift in Sources */,
 				A58F549123DC6688007D9335 /* PostLinkViewCell.swift in Sources */,
+				A51CC13123F1CD4D00050754 /* RealmPostSkill.swift in Sources */,
 				A5058C8623D9A4C400A7B962 /* PostViewController.swift in Sources */,
 				A524062723A18BEB006B387A /* FavoritesViewController.swift in Sources */,
+				A51CC12F23F1CC9C00050754 /* RealmPostPosition.swift in Sources */,
 				A58F548F23DC3FDE007D9335 /* MockDataService.swift in Sources */,
 				A524063C23A191A2006B387A /* Course.swift in Sources */,
 				A524064723A1A479006B387A /* PostViewCell.swift in Sources */,
 				A524062123A18BEB006B387A /* AppDelegate.swift in Sources */,
+				A5785A3723F2DE3B000D4E22 /* Repository.swift in Sources */,
 				A524064B23A1A9E7006B387A /* HomeViewController.swift in Sources */,
 				A524063A23A190F0006B387A /* Skill.swift in Sources */,
 				A524062323A18BEB006B387A /* SceneDelegate.swift in Sources */,
 				A524063823A18FCF006B387A /* Position.swift in Sources */,
 				A524064E23A1ABB7006B387A /* Constants.swift in Sources */,
+				A5785A3523F29FB2000D4E22 /* RealmService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
