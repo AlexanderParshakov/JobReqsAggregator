@@ -132,12 +132,10 @@
 		A524061F23A18BEB006B387A /* JobReqsAggregator */ = {
 			isa = PBXGroup;
 			children = (
-				A5D7DBA72410204C00CDEA2E /* Extensions */,
+				A5F20CF624103D9100641CCA /* Core */,
 				A5058C8423D99CF900A7B962 /* Storyboards */,
 				A58F548D23DC3FCC007D9335 /* Data Access */,
-				A524064C23A1ABAE006B387A /* Utilities */,
-				A524063F23A1936A006B387A /* View Controllers */,
-				A524063623A18FB5006B387A /* Models */,
+				A5F20CF724103DAB00641CCA /* MVC */,
 				A524062023A18BEB006B387A /* AppDelegate.swift */,
 				A524062223A18BEB006B387A /* SceneDelegate.swift */,
 				A524062B23A18BF1006B387A /* Assets.xcassets */,
@@ -173,14 +171,6 @@
 				A58F549223DC668F007D9335 /* Cells */,
 			);
 			path = Posts;
-			sourceTree = "<group>";
-		};
-		A524064C23A1ABAE006B387A /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				A524064D23A1ABB7006B387A /* Constants.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 		A567171C23F29A5E005924EC /* Standard Models */ = {
@@ -237,6 +227,24 @@
 				A5D7DBA524101FA500CDEA2E /* UserProfileViewController.swift */,
 			);
 			path = "User Profile";
+			sourceTree = "<group>";
+		};
+		A5F20CF624103D9100641CCA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A524064D23A1ABB7006B387A /* Constants.swift */,
+				A5D7DBA72410204C00CDEA2E /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A5F20CF724103DAB00641CCA /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				A524063623A18FB5006B387A /* Models */,
+				A524063F23A1936A006B387A /* View Controllers */,
+			);
+			path = MVC;
 			sourceTree = "<group>";
 		};
 		BC02E41201AA00AF6B9AC659 /* Frameworks */ = {
