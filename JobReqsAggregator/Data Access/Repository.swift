@@ -22,6 +22,9 @@ struct Repository {
             RealmService.Posts.persist(fromArray: fetchedData)
             return fetchedData
         }
+        static func get(byId id: Int) -> Post {
+            return RealmService.Posts.retrieve(byId: id)
+        }
         
         static func getFavorites() -> [Post] {
             return RealmService.Posts.retrieveFavorites()
