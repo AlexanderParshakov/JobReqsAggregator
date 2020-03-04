@@ -35,7 +35,6 @@ class HomeViewController: UIViewController {
         posts = Repository.Posts.getAll()
         postsTableView.reloadData()
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Identifiers.showPost {
             if let indexPath = postsTableView.indexPathForSelectedRow {

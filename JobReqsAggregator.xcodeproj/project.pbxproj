@@ -31,6 +31,8 @@
 		A5785A3723F2DE3B000D4E22 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5785A3623F2DE3B000D4E22 /* Repository.swift */; };
 		A58F548F23DC3FDE007D9335 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58F548E23DC3FDE007D9335 /* MockDataService.swift */; };
 		A58F549123DC6688007D9335 /* PostLinkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58F549023DC6688007D9335 /* PostLinkViewCell.swift */; };
+		A5D7DBA624101FA500CDEA2E /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D7DBA524101FA500CDEA2E /* UserProfileViewController.swift */; };
+		A5D7DBA92410205600CDEA2E /* UIView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D7DBA82410205600CDEA2E /* UIView + Ext.swift */; };
 		D61CFDB95CF3D39B4FB19F11 /* Pods_JobReqsAggregator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAB31E27DDB1E37C2233315 /* Pods_JobReqsAggregator.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		A5785A3623F2DE3B000D4E22 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		A58F548E23DC3FDE007D9335 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		A58F549023DC6688007D9335 /* PostLinkViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLinkViewCell.swift; sourceTree = "<group>"; };
+		A5D7DBA524101FA500CDEA2E /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		A5D7DBA82410205600CDEA2E /* UIView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Ext.swift"; sourceTree = "<group>"; };
 		F8205C3851E5300F6FBE38D5 /* Pods-JobReqsAggregator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobReqsAggregator.debug.xcconfig"; path = "Target Support Files/Pods-JobReqsAggregator/Pods-JobReqsAggregator.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +132,7 @@
 		A524061F23A18BEB006B387A /* JobReqsAggregator */ = {
 			isa = PBXGroup;
 			children = (
+				A5D7DBA72410204C00CDEA2E /* Extensions */,
 				A5058C8423D99CF900A7B962 /* Storyboards */,
 				A58F548D23DC3FCC007D9335 /* Data Access */,
 				A524064C23A1ABAE006B387A /* Utilities */,
@@ -153,7 +158,7 @@
 		A524063F23A1936A006B387A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A524064A23A1A9E7006B387A /* HomeViewController.swift */,
+				A5D7DBAA241038C900CDEA2E /* Home */,
 				A524064123A19A82006B387A /* NotificationsViewController.swift */,
 				A524062623A18BEB006B387A /* FavoritesViewController.swift */,
 				A524064523A1A45A006B387A /* Posts */,
@@ -207,6 +212,31 @@
 				A58F549023DC6688007D9335 /* PostLinkViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A5D7DBA72410204C00CDEA2E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5D7DBA82410205600CDEA2E /* UIView + Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A5D7DBAA241038C900CDEA2E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A524064A23A1A9E7006B387A /* HomeViewController.swift */,
+				A5D7DBAB241038DC00CDEA2E /* User Profile */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A5D7DBAB241038DC00CDEA2E /* User Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A5D7DBA524101FA500CDEA2E /* UserProfileViewController.swift */,
+			);
+			path = "User Profile";
 			sourceTree = "<group>";
 		};
 		BC02E41201AA00AF6B9AC659 /* Frameworks */ = {
@@ -341,6 +371,7 @@
 				A51CC13123F1CD4D00050754 /* RealmPostSkill.swift in Sources */,
 				A5058C8623D9A4C400A7B962 /* PostViewController.swift in Sources */,
 				A524062723A18BEB006B387A /* FavoritesViewController.swift in Sources */,
+				A5D7DBA624101FA500CDEA2E /* UserProfileViewController.swift in Sources */,
 				A51CC12F23F1CC9C00050754 /* RealmPostPosition.swift in Sources */,
 				A58F548F23DC3FDE007D9335 /* MockDataService.swift in Sources */,
 				A524063C23A191A2006B387A /* Course.swift in Sources */,
@@ -349,6 +380,7 @@
 				A5785A3723F2DE3B000D4E22 /* Repository.swift in Sources */,
 				A524064B23A1A9E7006B387A /* HomeViewController.swift in Sources */,
 				A524063A23A190F0006B387A /* Skill.swift in Sources */,
+				A5D7DBA92410205600CDEA2E /* UIView + Ext.swift in Sources */,
 				A524062323A18BEB006B387A /* SceneDelegate.swift in Sources */,
 				A524063823A18FCF006B387A /* Position.swift in Sources */,
 				A524064E23A1ABB7006B387A /* Constants.swift in Sources */,

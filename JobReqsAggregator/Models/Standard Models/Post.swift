@@ -39,7 +39,7 @@ final class Post {
         self.init()
         
         self.id = realmPost.id
-        self.position = Position(realmPosition: realmPost.position ?? RealmPostPosition())
+        self.position = Position(realmPosition: realmPost.position!)
         self.supportNumber = realmPost.supportNumber
         self.title = realmPost.title
         self.content = realmPost.content

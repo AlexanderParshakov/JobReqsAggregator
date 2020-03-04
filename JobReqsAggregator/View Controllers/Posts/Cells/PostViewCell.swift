@@ -37,16 +37,9 @@ class PostViewCell: UITableViewCell {
         supportNumberLabel.text = String(post.supportNumber)
         timePostedLabel.text = post.timePosted
         
-        setupWrappingView()
+        wrappingView.setupBasicViewWithShadow()
         
         selectionStyle = .none
     }
-    func setupWrappingView() {
-        wrappingView.layer.cornerRadius = 7
-        wrappingView.layer.masksToBounds = false
-        wrappingView.layer.shadowColor = UIColor.gray.cgColor
-        wrappingView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        wrappingView.layer.shadowRadius = 5
-        wrappingView.layer.shadowOpacity = 0.3
-    }
+    
 }

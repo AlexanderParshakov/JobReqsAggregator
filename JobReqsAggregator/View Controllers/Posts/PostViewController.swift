@@ -23,6 +23,7 @@ class PostViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
+    @IBOutlet weak var materialsHeaderView: UIView!
     @IBOutlet weak var linksTableView: UITableView!
     
     @IBOutlet weak var addSupportButton: UIButton!
@@ -46,26 +47,26 @@ class PostViewController: UIViewController {
         if !post.isFavorite {
             showFavSelection()
             self.post.isFavorite = true
-            RealmService.Posts.updatePost(post: post)
+            RealmService.Posts.update(post: post)
             return
         }
         else {
             hideFavSelection()
             self.post.isFavorite = false
-            RealmService.Posts.updatePost(post: post)
+            RealmService.Posts.update(post: post)
         }
     }
     @IBAction func addToReadLater(_ sender: Any) {
         if !post.isReadLater {
             showReadLaterSelection()
             self.post.isReadLater = true
-            RealmService.Posts.updatePost(post: post)
+            RealmService.Posts.update(post: post)
             return
         }
         else {
             hideReadLaterSelection()
             self.post.isReadLater = false
-            RealmService.Posts.updatePost(post: post)
+            RealmService.Posts.update(post: post)
         }
     }
     
@@ -89,10 +90,23 @@ class PostViewController: UIViewController {
         
         setupData()
         setupHeroIDs()
+        
+        setupMaterialsVisibility()
         linksTableView.reloadData()
         linksTableViewHeightConstraint.constant = linksTableView.contentSize.height
         
         scrollView.delegate = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.post = RealmService.Posts.retrieve(byId: post.id)
+        if post.isFavorite {
+            highlightButtonSelection(button: addToFavoritesButton)
+        } else { dehighlightButtonSelection(button: addToFavoritesButton) }
+        if post.isReadLater {
+            highlightButtonSelection(button: readLaterButton)
+        } else { dehighlightButtonSelection(button: readLaterButton) }
     }
     
     func setupData() {
@@ -103,13 +117,6 @@ class PostViewController: UIViewController {
         contentLabel.text = post.content
         
         originalSupport = post.supportNumber
-        
-        if post.isFavorite {
-            highlightButtonSelection(button: addToFavoritesButton)
-        } else { dehighlightButtonSelection(button: addToFavoritesButton) }
-        if post.isReadLater {
-            highlightButtonSelection(button: readLaterButton)
-        } else { dehighlightButtonSelection(button: readLaterButton) }
     }
 }
 
@@ -119,6 +126,11 @@ extension PostViewController {
     func setupButton(button: UIButton) {
         button.layer.cornerRadius = 15
         button.backgroundColor = Constants.Colors.lightGrey
+    }
+    func setupMaterialsVisibility() {
+        let hide = numberOfMaterials == 0 ? true : false
+        materialsHeaderView.isHidden = hide
+        linksTableViewHeightConstraint.constant = hide ? 0 : linksTableView.contentSize.height
     }
 }
 
@@ -170,6 +182,7 @@ extension PostViewController {
     }
 }
 
+// MARK: - Add to Favorities/Read Later
 extension PostViewController {
     private func showHUD(text: String) {
         let hud = JGProgressHUD(style: .extraLight)
@@ -211,7 +224,10 @@ extension PostViewController {
             button.setTitleColor(.darkText, for: .normal)
         }
     }
-    
+}
+
+// MARK: Handling Swipes
+extension PostViewController {
     private func setupGestureRecognizer() {
         let toLeftGestureRecognizer = UISwipeGestureRecognizer()
         toLeftGestureRecognizer.direction = .right

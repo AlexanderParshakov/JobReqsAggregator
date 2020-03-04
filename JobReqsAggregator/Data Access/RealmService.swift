@@ -51,7 +51,7 @@ extension RealmService.Posts {
             }
         }
     }
-    static func updatePost(post: Post) {
+    static func update(post: Post) {
         let realm = try! Realm()
         let postsById = realm.objects(RealmPost.self).filter("id == %@", post.id) // always one result
         if let updatablePost = postsById.first {
@@ -62,9 +62,17 @@ extension RealmService.Posts {
         }
     }
     static func retrieve() -> [Post] {
+        RealmService.printPath()
         let realm = try! Realm()
         let realmPosts = realm.objects(RealmPost.self)
         return mutateRealmPosts(realmPosts: realmPosts).sorted(by: { $0.timePosted > $1.timePosted })
+    }
+    static func retrieve(byId id: Int) -> Post {
+        let realm = try! Realm()
+        let postsById = realm.objects(RealmPost.self).filter("id == %@", id) // always one result
+        if let retrievedPost = postsById.first {
+            return Post(realmPost: retrievedPost)
+        } else { return Post() }
     }
     static func retrieveFavorites() -> [Post] {
         let realm = try! Realm()
