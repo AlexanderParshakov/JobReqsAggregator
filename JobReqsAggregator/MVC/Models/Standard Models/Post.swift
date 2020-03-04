@@ -18,9 +18,7 @@ final class Post {
     var isFavorite: Bool = false
     var isReadLater: Bool = false
     
-    init() {
-        
-    }
+    init() { }
     
     convenience init(id: Int, position: Position, supportNumber: Int, title: String, content: String, timePosted: String, isFavorite: Bool = false, isReadLater: Bool = false) {
         self.init()
@@ -39,7 +37,10 @@ final class Post {
         self.init()
         
         self.id = realmPost.id
-        self.position = Position(realmPosition: realmPost.position!)
+        if let realmPosition = realmPost.position {
+            self.position = Position(realmPosition: realmPosition)
+        }
+        
         self.supportNumber = realmPost.supportNumber
         self.title = realmPost.title
         self.content = realmPost.content

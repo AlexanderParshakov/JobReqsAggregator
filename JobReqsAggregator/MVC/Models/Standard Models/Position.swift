@@ -16,11 +16,9 @@ final class Position {
     var openVacancies: Int = 0
     var skillsRequired: [Skill]?
     var relatedCourses: [Course]?
-    var relatedMaterials: [Material]?
+    var relatedMaterials: [Material] = []
     
-    init() {
-        
-    }
+    init() { }
     
     convenience init(id: Int, title: String, description: String, avgSalary: Int, openVacancies: Int, skillsRequired: [Skill]?, relatedCourses: [Course]?, relatedMaterials: [Material]?) {
         self.init()
@@ -31,7 +29,7 @@ final class Position {
         self.openVacancies = openVacancies
         self.skillsRequired = skillsRequired
         self.relatedCourses = relatedCourses
-        self.relatedMaterials = relatedMaterials
+        self.relatedMaterials = relatedMaterials ?? []
     }
     convenience init(realmPosition: RealmPostPosition) {
         self.init()
@@ -40,10 +38,11 @@ final class Position {
         self.title = realmPosition.title
         self.description = realmPosition.positionDescription
         self.avgSalary = realmPosition.avgSalary
-        self.openVacancies = realmPosition.openVacancies
         
         realmPosition.relatedMaterials.forEach({ (realmMaterial) in
-            self.relatedMaterials?.append(Material(realmMaterial: realmMaterial))
+            let material = Material(realmMaterial: realmMaterial)
+            self.relatedMaterials.append(material)
         })
+        self.openVacancies = realmPosition.openVacancies
     }
 }

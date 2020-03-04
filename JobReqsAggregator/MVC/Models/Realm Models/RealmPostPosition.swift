@@ -26,7 +26,7 @@ final class RealmPostPosition: Object {
         self.avgSalary = position.avgSalary
         self.openVacancies = position.openVacancies
         
-        position.relatedMaterials?.forEach({ (material) in
+        position.relatedMaterials.forEach({ (material) in
             self.relatedMaterials.append(RealmPostMaterial(material: material))
         })
     }

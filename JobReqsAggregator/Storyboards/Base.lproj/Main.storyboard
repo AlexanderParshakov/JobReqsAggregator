@@ -907,6 +907,7 @@ Id diam vel quam elementum pulvinar etiam non. Leo vel fringilla est ullamcorper
                         <outlet property="addToFavoritesButton" destination="QKU-Cp-gCa" id="HpK-5K-KmD"/>
                         <outlet property="contentLabel" destination="JmB-O4-azx" id="amW-ug-3eF"/>
                         <outlet property="linksTableView" destination="fvv-Xc-reh" id="ubz-NZ-cjH"/>
+                        <outlet property="linksTableViewBottomConstraint" destination="gF6-FS-4X4" id="Ml0-Bo-9f9"/>
                         <outlet property="linksTableViewHeightConstraint" destination="hNh-F2-Zf4" id="9Bd-Mg-F8M"/>
                         <outlet property="materialsHeaderView" destination="eEw-ce-IYH" id="CWW-Qk-jmT"/>
                         <outlet property="positionNameLabel" destination="Ul3-eB-uod" id="w4m-wb-8KT"/>

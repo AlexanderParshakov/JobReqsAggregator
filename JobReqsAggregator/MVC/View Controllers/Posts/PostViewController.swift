@@ -31,8 +31,9 @@ class PostViewController: UIViewController {
     
     
     // MARK: - Constraints
-    
     @IBOutlet weak var linksTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var linksTableViewBottomConstraint: NSLayoutConstraint!
+    
     
     // MARK: - Actions
     @IBAction func subtractSupport(_ sender: Any) {
@@ -73,7 +74,7 @@ class PostViewController: UIViewController {
     // MARK: - Variables
     var post: Post = Post(id: 0, position: Position(id: 0, title: "", description: "", avgSalary: 0, openVacancies: 0, skillsRequired: nil, relatedCourses: nil, relatedMaterials: nil), supportNumber: 0, title: "", content: "", timePosted: "")
     var numberOfMaterials: Int {
-        return post.position.relatedMaterials?.count ?? 0
+        return post.position.relatedMaterials.count
     }
     var numberOfCourses: Int {
         return post.position.relatedCourses?.count ?? 0
@@ -91,7 +92,6 @@ class PostViewController: UIViewController {
         setupData()
         setupHeroIDs()
         
-        setupMaterialsVisibility()
         linksTableView.reloadData()
         linksTableViewHeightConstraint.constant = linksTableView.contentSize.height
         
@@ -100,13 +100,8 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.post = RealmService.Posts.retrieve(byId: post.id)
-        if post.isFavorite {
-            highlightButtonSelection(button: addToFavoritesButton)
-        } else { dehighlightButtonSelection(button: addToFavoritesButton) }
-        if post.isReadLater {
-            highlightButtonSelection(button: readLaterButton)
-        } else { dehighlightButtonSelection(button: readLaterButton) }
+        setupMaterialsVisibility()
+        refreshButtonsSelection() // in case states were changed in "Сохраненные посты"
     }
     
     func setupData() {
@@ -130,7 +125,16 @@ extension PostViewController {
     func setupMaterialsVisibility() {
         let hide = numberOfMaterials == 0 ? true : false
         materialsHeaderView.isHidden = hide
-        linksTableViewHeightConstraint.constant = hide ? 0 : linksTableView.contentSize.height
+        linksTableViewBottomConstraint.constant = hide ? 0 : 50
+    }
+    func refreshButtonsSelection() {
+        self.post = RealmService.Posts.retrieve(byId: post.id)
+        if post.isFavorite {
+            highlightButtonSelection(button: addToFavoritesButton)
+        } else { dehighlightButtonSelection(button: addToFavoritesButton) }
+        if post.isReadLater {
+            highlightButtonSelection(button: readLaterButton)
+        } else { dehighlightButtonSelection(button: readLaterButton) }
     }
 }
 
@@ -264,7 +268,7 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentLink = String(post.position.relatedMaterials?[indexPath.row].url ?? "")
+        let currentLink = String(post.position.relatedMaterials[indexPath.row].url)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifiers.postLinkCell) as! PostLinkViewCell
         cell.delegate = self
@@ -277,7 +281,7 @@ extension PostViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension PostViewController: PostLinkButtonDelegate {
     func openLink(atIndex: IndexPath) {
-        guard let url = URL(string: post.position.relatedMaterials?[atIndex.row].url ?? "") else { return }
+        guard let url = URL(string: post.position.relatedMaterials[atIndex.row].url) else { return }
         UIApplication.shared.open(url)
     }
 }
