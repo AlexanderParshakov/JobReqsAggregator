@@ -128,7 +128,7 @@ extension PostViewController {
         linksTableViewBottomConstraint.constant = hide ? 0 : 50
     }
     func refreshButtonsSelection() {
-        self.post = RealmService.Posts.retrieve(byId: post.id)
+        self.post = Repository.Posts.get(byId: post.id)
         if post.isFavorite {
             highlightButtonSelection(button: addToFavoritesButton)
         } else { dehighlightButtonSelection(button: addToFavoritesButton) }
